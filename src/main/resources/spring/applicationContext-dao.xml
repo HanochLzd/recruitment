@@ -9,7 +9,7 @@
 
     <!-- 配置数据库连接池 -->
     <!-- 加载配置文件 -->
-    <context:property-placeholder location="classpath:config/db.properties" />
+     <context:property-placeholder location="classpath:config/db.properties" />
     <!-- 数据库连接池 -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
         <property name="url" value="${jdbc.url}" />
