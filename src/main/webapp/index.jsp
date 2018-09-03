@@ -7,6 +7,7 @@
 </head>
 <body>
 <h2>Hello World!123213</h2>
+<h2>你可爱死了！O(∩_∩)</h2>
 <a href="index2.jsp">请移步至新主页</a>
 
 <div class="containor">
