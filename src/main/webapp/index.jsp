@@ -7,6 +7,7 @@
 </head>
 <body>
 <h2>Hello World!</h2>
+<a href="index2.jsp">请移步至新主页</a>
 
 <div class="containor">
     <div class="nav_left">
