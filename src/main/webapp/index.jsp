@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="static/css/style.css" />
 </head>
 <body>
-<h2>Hello World!123213   啦啦啦</h2>
+<h2>Hello World!123213 傻子吧   啦啦啦</h2>
 <h2>你可爱死了！O(∩_∩)</h2>
 <h1>（づ￣3￣）づ╭❤～ 爱你 爱你 爱我 </h1>
 <a href="index2.jsp">请移步至新主页</a>
