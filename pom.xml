@@ -19,9 +19,9 @@
         <spring.version>4.3.17.RELEASE</spring.version>
         <mybatis.version>3.4.6</mybatis.version>
         <mybatis.pageHelper.version>5.1.4</mybatis.pageHelper.version>
-        <mysql-connector-java.version>8.0.11</mysql-connector-java.version>
+        <!-- <mysql-connector-java.version>8.0.11</mysql-connector-java.version> -->
         <!--TODO 选择与你本地相符的mysql版本-->
-        <!--<mysql-connector-java.version>5.1.47</mysql-connector-java.version>-->
+        <mysql-connector-java.version>5.1.47</mysql-connector-java.version>
         <activiti.version>5.19.0</activiti.version>
         <dom4j.version>1.6.1</dom4j.version>
         <log4j.version>2.5</log4j.version>
