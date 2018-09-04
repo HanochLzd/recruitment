@@ -4,9 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <!-- 配置分页插件 -->
-    <!--<plugins>-->
-        <!--<plugin interceptor="com.github.pagehelper.PageInterceptor">-->
-            <!--<property name="dialect" value="mysql"/>-->
-        <!--</plugin>-->
-    <!--</plugins>-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <property name="dialect" value="mysql"/>
+            <!--分页参数合理化 -->
+			<property name="reasonable" value="true" />
+        </plugin>
+    </plugins>
 </configuration>

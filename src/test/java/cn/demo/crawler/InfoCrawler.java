@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 
-
 /**
  * 爬取资源(只爬取一次，目前只爬取了所有岗位，请勿运行)
  */
@@ -31,98 +30,98 @@ import java.util.Arrays;
 @ContextConfiguration(locations = "classpath:spring/applicationContext-dao.xml")
 public class InfoCrawler {
 
-    @Autowired
-    private JobGroupMapper jobGroupMapper;
+	@Autowired
+	private JobGroupMapper jobGroupMapper;
 
-    @Autowired
-    private MainGroupMapper mainGroupMapper;
+	@Autowired
+	private MainGroupMapper mainGroupMapper;
 
-    @Autowired
-    private JobMapper jobMapper;
+	@Autowired
+	private JobMapper jobMapper;
 
-    private Hanyu hanyu = new Hanyu();
+	private Hanyu hanyu = new Hanyu();
 
+	@Test
+	public void getAllInfo() throws IOException {
+		// 创建一个url实例
+		// int count = 0;
+		URL url = new URL("https://www.lagou.com");
+		Document doc = Jsoup.parse(url, 5000);
 
-    @Test
-    public void getAllInfo() throws IOException {
-        //创建一个url实例
-        int count = 0;
-        URL url = new URL("https://www.lagou.com");
-        Document doc = Jsoup.parse(url, 5000);
+		Elements elements = doc.select(".menu_sub.dn dl dd a");
 
-        Elements elements = doc.select(".menu_sub.dn dl dd a");
+		for (Element element : elements) {
+			// insertJobGroup(element);
+			System.out.println(element.text());
+			insertJob(element);
+		}
 
-        for (Element element : elements) {
-            //insertJobGroup(element);
-            System.out.println(element.text());
-            insertJob(element);
-        }
+	}
 
-    }
+	/**
+	 * 将jobgroup信息插入数据库
+	 *
+	 * @param element
+	 *            element
+	 */
+	@SuppressWarnings("unused")
+	private void insertJobGroup(Element element) {
+		System.out.println(element.text());
+		Element parentEle = element.parent().parent().parent().previousElementSibling().child(0).getElementsByTag("h2")
+				.first();
+		System.out.println("父节点:" + parentEle.text());
+		JobGroup jobGroup = new JobGroup();
+		jobGroup.setGroupName(element.text());
 
-    /**
-     * 将jobgroup信息插入数据库
-     *
-     * @param element element
-     */
-    private void insertJobGroup(Element element) {
-        System.out.println(element.text());
-        Element parentEle = element.parent().parent().parent().
-                previousElementSibling().child(0).getElementsByTag("h2").first();
-        System.out.println("父节点:" + parentEle.text());
-        JobGroup jobGroup = new JobGroup();
-        jobGroup.setGoupName(element.text());
+		MainGroupExample mainGroupExample = new MainGroupExample();
+		MainGroupExample.Criteria criteria = mainGroupExample.createCriteria();
+		criteria.andMainGroupNameEqualTo(parentEle.text());
+		MainGroup mainGroup = mainGroupMapper.selectByExample(mainGroupExample).get(0);
 
-        MainGroupExample mainGroupExample = new MainGroupExample();
-        MainGroupExample.Criteria criteria = mainGroupExample.createCriteria();
-        criteria.andMainGroupNameEqualTo(parentEle.text());
-        MainGroup mainGroup = mainGroupMapper.selectByExample(mainGroupExample).get(0);
+		jobGroup.setMainGroupId(mainGroup.getMainGroupId());
+		jobGroupMapper.insert(jobGroup);
+	}
 
-        jobGroup.setMainGroupId(mainGroup.getMainGroupId());
-        jobGroupMapper.insert(jobGroup);
-    }
+	/**
+	 * 插入岗位名称
+	 *
+	 * @param element
+	 *            element
+	 */
+	private void insertJob(Element element) {
+		Element parentEl = element.parent().previousElementSibling();
+		System.out.println("父节点：" + parentEl.text());
 
-    /**
-     * 插入岗位名称
-     *
-     * @param element element
-     */
-    private void insertJob(Element element) {
-        Element parentEl = element.parent().previousElementSibling();
-        System.out.println("父节点：" + parentEl.text());
+		Job job = new Job();
 
-        Job job = new Job();
+		job.setJobName(element.text());
+		job.setJobNickname(hanyu.getStringPinYin(element.text()));
 
-        job.setJobName(element.text());
-        job.setJobNickname(hanyu.getStringPinYin(element.text()));
+		JobGroupExample example = new JobGroupExample();
+		JobGroupExample.Criteria criteria = example.createCriteria();
+		criteria.andGroupNameEqualTo(parentEl.text());
+		JobGroup jobGroup = jobGroupMapper.selectByExample(example).get(0);
 
-        JobGroupExample example = new JobGroupExample();
-        JobGroupExample.Criteria criteria = example.createCriteria();
-        criteria.andGoupNameEqualTo(parentEl.text());
-        JobGroup jobGroup = jobGroupMapper.selectByExample(example).get(0);
+		job.setJobGroupId(jobGroup.getGroupId());
 
-        job.setJobGroupId(jobGroup.getGroupId());
+		jobMapper.insert(job);
 
-        jobMapper.insert(job);
+	}
 
+	@Test
+	public void test3() throws BadHanyuPinyinOutputFormatCombination {
+		// Hanyu hanyu = new Hanyu();
+		// String pinyin = hanyu.getStringPinYin("java你好");
+		// System.out.println(pinyin);
 
-    }
+		HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
+		format = new HanyuPinyinOutputFormat();
 
+		format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
 
-    @Test
-    public void test3() throws BadHanyuPinyinOutputFormatCombination {
-//        Hanyu hanyu = new Hanyu();
-//        String pinyin = hanyu.getStringPinYin("java你好");
-//        System.out.println(pinyin);
+		String[] p = PinyinHelper.toHanyuPinyinStringArray('你', format);
 
-        HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
-        format = new HanyuPinyinOutputFormat();
-
-        format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
-
-        String[] p = PinyinHelper.toHanyuPinyinStringArray('你',format);
-
-        System.out.println(Arrays.toString(p));
-    }
+		System.out.println(Arrays.toString(p));
+	}
 
 }
