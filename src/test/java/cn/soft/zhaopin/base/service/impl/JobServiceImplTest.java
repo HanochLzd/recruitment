@@ -22,6 +22,6 @@ public class JobServiceImplTest {
         List<JobCustom> jobCustomList = jobCustomMapper.selectJobList();
         jobCustomList.forEach(System.out::println);
         System.out.println("hhhhhhhhhh");
-
+        System.out.println("lalala");
     }
 }
