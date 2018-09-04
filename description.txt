@@ -1,0 +1,16 @@
+项目名：recruitment
+1.包结构
+    cn.soft.zhaopin-base
+                    |--controller(控制层)
+                    |--filter(自定义拦截器)
+                    |--mapper(DAO层映射文件)----
+                    |--pojo                  |---mybatis逆向工程完成装配（XXXMapper.xml,XXX.java,XXXExample.java）
+                        |--po(持久对象)---------
+                        |--vo(业务对象，自定义)
+                    |--process(其他加工类)
+                        |--context(存放数据字典集合)
+                        |--exception(自定义异常,全局异常处理)
+                        |--result(自定义结果集,用于控制层将数据以Json格式传递给前台)
+                    |--service(业务层,接口)
+                        |--impl(接口实现类)
+2.其他说明（待补充）
