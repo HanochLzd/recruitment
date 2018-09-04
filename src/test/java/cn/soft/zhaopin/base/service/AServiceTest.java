@@ -12,12 +12,12 @@ import java.util.List;
 @ContextConfiguration(locations = "classpath:spring/applicationContext-*.xml")
 public class AServiceTest {
 
-    @Autowired
+    /*@Autowired
     private BMapper bMapper;
 
     @Test
     public void runTest() {
         List<B> examples = bMapper.selectByExample(new BExample());
         examples.forEach(System.out::println);
-    }
+    }*/
 }
