@@ -25,7 +25,7 @@ import java.util.Arrays;
 
 
 /**
- * 爬取资源
+ * 爬取资源(只爬取一次)
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring/applicationContext-dao.xml")
