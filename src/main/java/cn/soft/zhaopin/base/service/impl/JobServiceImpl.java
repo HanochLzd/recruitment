@@ -51,7 +51,7 @@ public class JobServiceImpl implements JobService {
             for (JobGroup jobGroup : jobGroups) {
                 List<JobCustom> jobs = new ArrayList<>();
                 for (JobCustom jobCustom : jobCustomList) {
-                    if (jobCustom.getGoupName().equals(jobGroup.getGroupName()) &&
+                    if (jobCustom.getGroupName().equals(jobGroup.getGroupName()) &&
                             jobCustom.getMainGroupName().equals(mainGroup.getMainGroupName())) {
                         jobs.add(jobCustom);
                     }

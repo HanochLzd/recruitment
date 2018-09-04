@@ -49,7 +49,7 @@ public class JobServiceImplTest {
             for (JobGroup jobGroup : jobGroups) {
                 List<JobCustom> jobs = new ArrayList<>();
                 for (JobCustom jobCustom : jobCustomList) {
-                    if (jobCustom.getGoupName().equals(jobGroup.getGroupName()) &&
+                    if (jobCustom.getGroupName().equals(jobGroup.getGroupName()) &&
                             jobCustom.getMainGroupName().equals(mainGroup.getMainGroupName())) {
                         jobs.add(jobCustom);
                     }
@@ -79,12 +79,12 @@ public class JobServiceImplTest {
         List<JobCustom> jobCustomList = new ArrayList<>();
         JobCustom j1 = new JobCustom();
         j1.setMainGroupName("开发");
-        j1.setGoupName("后台开发");
+        j1.setGroupName("后台开发");
         j1.setJobName("java");
 
         JobCustom j2 = new JobCustom();
         j2.setMainGroupName("开发");
-        j2.setGoupName("移动开发");
+        j2.setGroupName("移动开发");
         j2.setJobName("IOS");
 
         jobCustomList.add(j1);

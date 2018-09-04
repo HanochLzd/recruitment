@@ -33,6 +33,22 @@
 
     <script type="text/javascript">
 
+        $(function () {
+            alert("123");
+            $.ajax({
+                url : '${baseurl}jobs',
+                type : 'GET',
+                dataType : 'json',
+                success : function(data) {
+                    alert(data);
+                    initMenu(_menus);//解析json数据，将菜单生成
+                },
+                error : function() {
+                    alert('菜单加载异常!'+${baseurl});
+                }
+            })
+        });
+
         (function () {
             var protocol = window.location.protocol;
             var host = window.location.host;

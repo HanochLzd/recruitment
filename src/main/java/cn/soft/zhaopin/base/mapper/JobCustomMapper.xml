@@ -9,14 +9,14 @@
 		<result column="job_group_id" jdbcType="INTEGER" property="jobGroupId" />
 		<result column="job_level" jdbcType="INTEGER" property="jobLevel" />
 		<result column="main_group_name" jdbcType="VARCHAR" property="mainGroupName" />
-		<result column="goup_name" jdbcType="VARCHAR" property="goupName" />
+		<result column="group_name" jdbcType="VARCHAR" property="groupName" />
 	</resultMap>
 
     <!--List<JobCustom> selectJobList();-->
     <select id="selectJobList" resultMap="BaseResultMap">
         SELECT
 			j.*,
-			g.goup_name,
+			g.group_name,
 			m.main_group_name
 		FROM
 			job j,
