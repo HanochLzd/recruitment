@@ -1,5 +1,6 @@
 *.js linguist-language=Java
 # Intellij
 *.iml
+.idea
 .idea/
 target/
