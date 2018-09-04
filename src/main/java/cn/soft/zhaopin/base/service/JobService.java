@@ -3,6 +3,7 @@ package cn.soft.zhaopin.base.service;
 import cn.soft.zhaopin.base.pojo.vo.JobCustom;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Hanoch
@@ -16,5 +17,5 @@ public interface JobService {
      *
      * @return jobs
      */
-    List<JobCustom> queryAllJob();
+    Map<String, Object> queryAllJob();
 }
