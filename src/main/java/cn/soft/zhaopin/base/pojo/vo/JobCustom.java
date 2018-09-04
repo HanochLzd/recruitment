@@ -17,7 +17,7 @@ public class JobCustom extends Job {
     /**
      * 二层分组名称
      */
-    private String jobGroupName;
+    private String goupName;
 
     public String getMainGroupName() {
         return mainGroupName;
@@ -27,11 +27,19 @@ public class JobCustom extends Job {
         this.mainGroupName = mainGroupName;
     }
 
-    public String getJobGroupName() {
-        return jobGroupName;
+    public String getGoupName() {
+        return goupName;
     }
 
-    public void setJobGroupName(String jobGroupName) {
-        this.jobGroupName = jobGroupName;
+    public void setGoupName(String goupName) {
+        this.goupName = goupName;
+    }
+
+    @Override
+    public String toString() {
+        return "JobCustom{" +
+                "mainGroupName='" + mainGroupName + '\'' +
+                ", goupName='" + goupName + '\'' + super.toString() +
+                '}';
     }
 }

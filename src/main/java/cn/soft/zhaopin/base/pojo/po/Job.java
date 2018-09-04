@@ -165,4 +165,15 @@ public class Job {
     public void setJobLevel(Integer jobLevel) {
         this.jobLevel = jobLevel;
     }
+
+    @Override
+    public String toString() {
+        return "Job{" +
+                "jobId=" + jobId +
+                ", jobName='" + jobName + '\'' +
+                ", jobNickname='" + jobNickname + '\'' +
+                ", jobGroupId=" + jobGroupId +
+                ", jobLevel=" + jobLevel +
+                '}';
+    }
 }
