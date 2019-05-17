@@ -1,5 +1,5 @@
 # recruitment
-<h2>招聘网站项目</h2><br>
+<h2>招聘网站项目（已废除）</h2><br>
 <hr>
 ⚡⚡⚡协同开发🕒（参照<a href="https://www.lagou.com/">拉勾网</a>）
 
